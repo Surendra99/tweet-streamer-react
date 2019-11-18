@@ -1,21 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {ListGroup} from 'react-bootstrap';
+import TweetsList from './components/TweetsList';
 
 class App extends React.Component {
-
-  componentDidMount() {
-    const { cableApp } = this.props;
-    cableApp.line = cableApp.cable.subscriptions.create({ 'channel': 'ConversationsChannel' }, {
-      received: (tweet) => {
-        console.log(tweet);
-      }
-    })
-  }
   render() {
+    const {cableApp} = this.props;
     return (
       <div className="App">
-        Hello world
+        <TweetsList cableApp={cableApp}/>
       </div>
     );
   }
